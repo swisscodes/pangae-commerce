@@ -1,0 +1,15 @@
+.whole-wrapper {
+    display: grid;
+    grid-template-areas: 
+    'nav'
+    'body';
+}
+
+.nav_whole_wrapper {
+    grid-area: nav;
+    height: 2.5em;
+}
+
+.body_whole_wrapper {
+    grid-area: body;
+}

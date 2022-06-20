@@ -1,0 +1,86 @@
+.nav-container {
+}
+
+.nav-main {
+    position: fixed;
+    width: 100%;
+    background-color: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.nav-main__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+/******* NavLeft CSS START **************/
+
+.navleft-main {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 2.5em;
+    padding-left: 25PX;
+    
+}
+
+.navleft-main p {
+    width: 140px;
+    letter-spacing: 10px;
+}
+
+
+/******* NavLeft CSS END **************/
+
+
+/******* NavRight CSS START **************/
+
+.navright-main {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    height: 2.5em;
+    padding-right: 25px;
+}
+
+
+/******* NavRight CSS END **************/
+
+.navright-main__select {
+    border: none;
+    outline: none;
+    width: 70px;
+    text-align: center;
+}
+
+/* .navright-main__select option {
+   text-align: center;
+} */
+
+.cartt {
+    width: 25px;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+    /******* NavLeft CSS START **************/
+
+.navleft-main p {
+    width: unset;
+    letter-spacing: 10px;
+}
+
+.navleft-main > a {
+    display: none;
+}
+
+
+/******* NavLeft CSS END **************/
+}
