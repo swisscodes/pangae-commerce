@@ -14,7 +14,10 @@ function NavRight({currencyData, setCurrency, currency}:any) {
             }
           </select>
         </div>
-				<div ><Cartt className='cartt'/></div>
+				<div className='navright__cart'>
+          <Cartt className='icon-cart'/>
+          <span className='cart-number'>{2}</span>
+        </div>
 			</div>
 		</div>
   )

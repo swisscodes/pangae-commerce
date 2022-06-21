@@ -30,14 +30,18 @@ function Products({apiData, currency}:any) {
           <p>from {currency==='USD'?'$':currency} {item.price}</p>
         </div>
 
-        <div className=''><button onClick={()=>addCartBtn(item)}>Add to cart</button></div>
+        <div className=''>
+          <button onClick={()=>addCartBtn(item)}>Add to cart</button>
+        </div>
       </div>)
   }
 
   //
   function addCartBtn(item:any) {
-
+    
     modalState.setModalOnOff(()=> !modalState.modalOnOff)
+    //@ts-ignore
+    document.querySelector("body").style.overflow = "hidden";
     item = {...item, currency}
     modalState.setCurrentObj(item)
   }

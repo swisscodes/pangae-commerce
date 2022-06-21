@@ -5,12 +5,16 @@ import { useProductContext } from 'context/product-context/productContext'
 function CartModal() {
 
 	const {modalState} = useProductContext()
-	
+
   return (
 		console.log(modalState?.currentObj),
-    <div className='cartmodal-container'>
-      <div className="cartmodal-main">
-				<div className='util-modalx'><button onClick={()=>modalState.setModalOnOff(()=> !modalState.modalOnOff)}>X</button></div>
+	<>
+		<div className='overlay'></div>
+		<div className='cartmodal-container'>
+			<div className="cartmodal-main">
+				<div className='util-modalx'>
+					<button onClick={()=>closeModalx()}>X</button>
+				</div>
 				<div className='util-cartmodal_title'><h2>{modalState?.currentObj.title}</h2></div>
 				
 				<div className='cartmodal-body'>
@@ -19,9 +23,21 @@ function CartModal() {
 					</p>
 					<p>from {modalState?.currentObj.currency==='USD'?'$':modalState?.currentObj.currency} {modalState?.currentObj.price}</p>
 				</div>
+
+				<div className='cartmodal-footer'>
+					<div>cancell</div>
+					<div>add</div>
+				</div>
 			</div>
 		</div>
+	</>
   )
+	//
+	function closeModalx() {
+		modalState.setModalOnOff(()=> !modalState.modalOnOff)
+		
+		const body = document.querySelector("body");
+	}
 }
 
 export default CartModal
