@@ -1,8 +1,8 @@
-.cartmodal-container {
+.addprodmodal-container {
     position: relative;
 }
 
-.cartmodal-main {
+.addprodmodal-main {
     position:fixed;
     top: 12%;
     left: 0;
@@ -17,26 +17,13 @@
     overflow: auto;
 }
 
-.cartmodal-body {
+.addprodmodal-body {
     height: 50vh;
 }
 
 
-.overlay {
-    position:fixed;
-    left:0;
-    top:0;
-    width:100vw;
-    height:100vh;
-    display:block;
-    background-color:#000;
-    overflow: hidden;
-    opacity:0.5;
-}
-
-
 @media only screen and (max-width: 768px) {
-    .cartmodal-main {
+    .addprodmodal-main {
         top: 18%;
         width: 90%;
     }

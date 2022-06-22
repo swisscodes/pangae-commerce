@@ -1,14 +1,15 @@
 import React from 'react'
 import { useProductContext } from 'context/product-context/productContext'
 import {ReactComponent as Cartt} from './static/img/cartt.svg'
+import CartModal from './cart-modal/CartModal'
 
 function NavRight({currencyData, setCurrency, currency}:any) {
 
-  const {cart} = useProductContext()
+  const {cart, modalState} = useProductContext()
 
   return (
-    console.log(cart.getTotalPrice()),
     <div className='navright-container'>
+      {modalState.cartOnOff && <CartModal/>}
       <div className="navright-main">
 				<div>Account</div>
         <div>
@@ -20,12 +21,20 @@ function NavRight({currencyData, setCurrency, currency}:any) {
           </select>
         </div>
 				<div className='navright__cart'>
-          <Cartt className='icon-cart' onClick={()=> console.log(cart.showCart())}/>
+          <Cartt className='icon-cart' onClick={()=>togglecartModal() }/>
           {cart.cartList.size<1? '':<span className='cart-number'>{cart.cartList.size}</span>}
         </div>
 			</div>
 		</div>
   )
+
+  //
+  function togglecartModal() {
+    console.log(cart.showCart(), cart.getTotalPrice())
+    modalState.setCartOnOff(() => !modalState.cartOnOff )
+    //@ts-ignore
+    document.querySelector("body").style.overflow = "hidden";
+  }
 }
 
 export default NavRight

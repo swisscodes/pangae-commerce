@@ -9,6 +9,7 @@ export const useProductContext = () => useContext(productContext);
 
 export default function ProductProvider ({ children }:any) {
   const [modalOnOff, setModalOnOff] = useState(false);
+  const [cartOnOff, setCartOnOff] = useState(false);
   const [currentObj, setCurrentObj] = useState(null);
   const [postFunc, setPostFunc] = useState((f:Function)=>f);
 
@@ -18,7 +19,8 @@ export default function ProductProvider ({ children }:any) {
     <productContext.Provider value={
         {
           modalState:{ modalOnOff, setModalOnOff, 
-                      currentObj, setCurrentObj, 
+                      currentObj, setCurrentObj,
+                      cartOnOff, setCartOnOff,
                       postFunc, setPostFunc
                     },
           cart:cart,
@@ -33,7 +35,6 @@ export default function ProductProvider ({ children }:any) {
 
 
 class Cart {
-  totalPrice:number = 0
   cartList:Map<number, any> = new Map()
 
   addToCart(id:number, item:any, quantity=1) {
@@ -49,10 +50,11 @@ class Cart {
   }
 
   getTotalPrice() {
-    for(const [item, value] of this.cartList.entries()) {
-      this.totalPrice += value?.price
+    var totalPrice:number = 0
+    for(const [_, value] of this.cartList.entries()) {
+      totalPrice += (value?.price * value?.quantity)
     }
-    console.log(this.totalPrice)
+    return totalPrice
   }
 }
 
