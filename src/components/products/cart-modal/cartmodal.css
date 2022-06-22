@@ -17,6 +17,10 @@
     overflow: auto;
 }
 
+.cartmodal-body {
+    height: 50vh;
+}
+
 
 .overlay {
     position:fixed;

@@ -4,7 +4,7 @@ import { useProductContext } from 'context/product-context/productContext'
 
 function CartModal() {
 
-	const {modalState} = useProductContext()
+	const {modalState, cart} = useProductContext()
 
   return (
 		console.log(modalState?.currentObj),
@@ -25,8 +25,8 @@ function CartModal() {
 				</div>
 
 				<div className='cartmodal-footer'>
-					<div>cancell</div>
-					<div>add</div>
+					<div><button onClick={()=>closeModalx()}>cancell</button></div>
+					<div><button onClick={()=> addItem(modalState.currentObj)}>Add</button> </div>
 				</div>
 			</div>
 		</div>
@@ -35,8 +35,12 @@ function CartModal() {
 	//
 	function closeModalx() {
 		modalState.setModalOnOff(()=> !modalState.modalOnOff)
-		
-		const body = document.querySelector("body");
+		//@ts-ignore
+		document.querySelector("body").style.overflow = 'initial';
+	}
+
+	function addItem(item:any) {
+		cart.addToCart(item.id, item)
 	}
 }
 

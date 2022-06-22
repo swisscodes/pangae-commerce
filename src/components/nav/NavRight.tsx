@@ -1,8 +1,13 @@
 import React from 'react'
+import { useProductContext } from 'context/product-context/productContext'
 import {ReactComponent as Cartt} from './static/img/cartt.svg'
 
 function NavRight({currencyData, setCurrency, currency}:any) {
+
+  const {cart} = useProductContext()
+
   return (
+    console.log(cart.getTotalPrice()),
     <div className='navright-container'>
       <div className="navright-main">
 				<div>Account</div>
@@ -15,8 +20,8 @@ function NavRight({currencyData, setCurrency, currency}:any) {
           </select>
         </div>
 				<div className='navright__cart'>
-          <Cartt className='icon-cart'/>
-          <span className='cart-number'>{2}</span>
+          <Cartt className='icon-cart' onClick={()=> console.log(cart.showCart())}/>
+          {cart.cartList.size<1? '':<span className='cart-number'>{cart.cartList.size}</span>}
         </div>
 			</div>
 		</div>
